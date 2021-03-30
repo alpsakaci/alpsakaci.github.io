@@ -7,7 +7,7 @@ description: > # this means to ignore newlines until "email:"
 
 email: alpsakaci@protonmail.com
 logo: "/assets/images/profile.jpg"
-float_logo: false
+float_logo: true
 cover: "/assets/images/header.jpeg"
 name: 'Alp Şakacı'
 author: 'Alp Şakacı'
