@@ -1,1 +1,0 @@
-# alpsakaci.github.io
