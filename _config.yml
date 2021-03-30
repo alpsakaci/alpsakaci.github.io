@@ -3,17 +3,19 @@ plugins:
 
 title: "Alp Şakacı"
 description: > # this means to ignore newlines until "email:"
-   Computer Science and Music work in harmony.
+   Software Engineer <br>
+   Amateur Bassist <br>
+   <small><i>Computer Science and Music work in harmony.</i></small>
 
 email: alpsakaci@protonmail.com
 logo: "/assets/images/profile.jpg"
 float_logo: true
-cover: "/assets/images/header.jpeg"
+cover: "/assets/images/header.jpg"
 name: 'Alp Şakacı'
 author: 'Alp Şakacı'
 author_image: "/assets/images/profile.jpg"
 paginate:	5
-url: "https://alpsakaci.com" # the base hostname & protocol for your site
+url: "https://alpsakaci.com"
 baseurl: ""
 twitter_handle: '@megalpdeth'
 #google_analytics: UA-XXXXX-X
