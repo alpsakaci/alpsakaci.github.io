@@ -27,12 +27,12 @@ social:
   
   - icon: instagram
     url: https://instagram.com/alp.sakaci/
-
-  - icon: spotify
-    url: https://open.spotify.com/user/alpsakaci
     
   - icon:	linkedin
     url:	https://www.linkedin.com/in/alpsakaci/
 
   - icon:	github
     url:	https://github.com/alpsakaci/
+
+  - icon:	envelope-o
+    url:	mailto:alpsakaci@protonmail.com
