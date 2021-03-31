@@ -1,5 +1,5 @@
 <!-- header start -->
 {% if site.float_logo %}
-  <a href="{{ site.url }}{{ site.baseurl }}" class="logo-readium"><span class="logo" style="background-image: url('/favicon.ico')"></span></a>
+  <a href="{{ site.url }}{{ site.baseurl }}" class="logo-readium"><span class="logo" style="background-image: url('{{ site.logo | prepend: site.baseurl | prepend: site.url }}')"></span></a>
 {% endif %}
 <!-- header end -->
