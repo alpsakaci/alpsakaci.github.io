@@ -15,7 +15,7 @@ name: 'Alp Şakacı'
 author: 'Alp Şakacı'
 author_image: "/assets/images/profile.jpg"
 paginate:	5
-url: "https://alpsakaci.com"
+url: "https://alpsakaci.github.io"
 baseurl: ""
 twitter_handle: '@megalpdeth'
 #google_analytics: UA-XXXXX-X
