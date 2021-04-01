@@ -18,7 +18,7 @@ paginate:	5
 url: "https://alpsakaci.github.io"
 baseurl: ""
 twitter_handle: '@megalpdeth'
-#google_analytics: UA-XXXXX-X
+google_analytics: UA-139163516-1
 
 social:
   - icon:	twitter
