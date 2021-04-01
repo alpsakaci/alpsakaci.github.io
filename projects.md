@@ -20,8 +20,6 @@ permalink: /projects/
 - Password manager client written in Flutter.
 - Includes password generator.
 
-[Source code](https://github.com/alpsakaci/secretpass)
-
 ---
 ## Floppy
 - Simple note-taking application.
