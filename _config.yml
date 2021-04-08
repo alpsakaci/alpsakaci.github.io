@@ -21,12 +21,6 @@ twitter_handle: '@megalpdeth'
 google_analytics: UA-139163516-1
 
 social:
-  - icon:	twitter
-    url:	https://twitter.com/megalpdeth/
-    share_url: http://twitter.com/share
-    share_title: ?text=
-    share_link: "&amp;url="
-  
   - icon: instagram
     url: https://instagram.com/alp.sakaci/
     
