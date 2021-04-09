@@ -266,6 +266,8 @@ DEPENDENCIES
   github-pages (~> 213)
   jekyll (~> 3.9.0)
   jekyll-feed (~> 0.12)
+  jekyll-seo-tag
+  jekyll-sitemap
   jemoji
   minima (~> 2.5)
   tzinfo (~> 1.2)
