@@ -17,10 +17,13 @@ author_image: "/assets/images/profile.jpg"
 paginate:	5
 url: "https://alpsakaci.com"
 baseurl: ""
-twitter_handle: '@megalpdeth'
+twitter_handle: '@alpsakaci'
 google_analytics: UA-139163516-1
 
 social:
+  - icon: twitter
+    url: https://twitter.com/alpsakaci/
+
   - icon: instagram
     url: https://instagram.com/alp.sakaci/
     
