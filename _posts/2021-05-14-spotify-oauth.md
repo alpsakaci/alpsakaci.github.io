@@ -193,10 +193,7 @@ Hello!
 
 ### That's it. Run your project and test the app.
 
-Spring Security will redirect you to Spotify login page. After a successful authentication you can access the index page and /user endpoint.
-
-
-After authenticated successfully, you can access index page.
+Spring Security will redirect you to Spotify login page. After authenticated successfully, you can access index page and /user endpoint.
 
 ![Spotify Login Page](/assets/article_images/2021-05-14-spotify-oauth/3.png)
 
