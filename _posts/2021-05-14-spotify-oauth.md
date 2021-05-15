@@ -10,7 +10,7 @@ categories: backend-development
 
 ## How to Integrate Spotify OAuth to Spring Boot Application?
 
-Spring boot has an OAuth2 Login feature to allow users to log in to your application with their existing account. You can integrate OAuth 2.0 providers to Spring Boot application with a few configuration. If you read the Spring Boot documentation you will notice that Spring Boot includes pre-defined configures for well known providers such as Google and Facebook. To integrate your application to Spotify OAuth provider you have to add custom configurations.
+Spring boot has an OAuth2 Login feature to allow users to log in to your application with their existing account. You can integrate OAuth 2.0 providers to Spring Boot application with a few configuration. If you read the Spring Boot documentation you will notice that Spring Boot includes pre-defined configurations for well known providers such as Google and Facebook. To integrate your application to Spotify OAuth provider you have to add custom configurations.
 <!-- link -->
 
 ---
