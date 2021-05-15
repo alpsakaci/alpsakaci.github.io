@@ -82,7 +82,7 @@ public ClientRegistrationRepository clientRegistrationRepository() {
 
 - Configure Client Registration
 
-We will register our client to Spring Security. OAuth Client library will handle authentication with this configuration. Register the client with your Client ID and Client Secret. Make sure that Redirect URI format is identical with Spotify settings. The user object returned from Spotify API includes user name with "display_name" attribute name. You have to set this attribute name so that Spring Security can register the user name.
+We will register our client to Spring Security. OAuth Client library will handle authentication with this configuration. Register the client with your Client ID and Client Secret. Make sure that Redirect URI format is identical to Spotify settings. The user object returned from Spotify API includes user name with "display_name" attribute name. You have to set this attribute name so that Spring Security can register the user name.
 
 {% highlight java %}
 private ClientRegistration spotifyClientRegistration() {

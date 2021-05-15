@@ -16,11 +16,6 @@ permalink: /projects/
 [Source Code](https://github.com/alpsakaci/django-secretpass)
 
 ---
-## SecretPass Client
-- Password manager client written in Flutter.
-- Includes password generator.
-
----
 ## Floppy
 - Simple note-taking application.
 - Easy install with Django packaging system.
