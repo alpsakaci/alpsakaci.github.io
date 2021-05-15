@@ -69,7 +69,9 @@ public class OAuth2LoginSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 {% endhighlight %}
 
-- Configuration class must return a bean. Define a bean that returns ClientRegistrationRepository. In this sample project we will use InMemoryClientRegistrationRepository.
+- Configuration class must return a bean.
+
+Define a bean that returns ClientRegistrationRepository. In this sample project we will use an In Memory Repository.
 
 {% highlight java %}
 @Bean
