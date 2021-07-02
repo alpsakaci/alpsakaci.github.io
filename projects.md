@@ -7,6 +7,11 @@ permalink: /projects/
 
 *Software projects from a junior developer.*
 
+## List Flit
+- Playlist migration service from Apple Music to Spotify.
+- You can move your music library between streaming services.
+- More music streaming services will be added to the project soon...
+
 ## SecretPass
 - RESTful service for password manager app.
 - AES Galois Counter Mode encryption.
