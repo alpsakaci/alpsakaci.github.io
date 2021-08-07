@@ -3,8 +3,8 @@ plugins:
 
 title: "Alp Şakacı"
 description: > # this means to ignore newlines until "email:"
-   Software Engineer. <br>
-   Amateur Bassist. <br>
+   Software Engineer <br>
+   Amateur Bassist <br>
    <small><i>Computer Science and Music work in harmony.</i></small>
 
 email: alpsakaci@protonmail.com
