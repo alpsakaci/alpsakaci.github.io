@@ -3,7 +3,7 @@ layout: post
 title:  "Make Authenticated Request to Spotify"
 date:   2021-10-17
 categories: backend-development
-tags: java spring
+tags: spring-boot oauth
 ---
 
 ### How to make authenticated request to Spotify from Spring Boot application?

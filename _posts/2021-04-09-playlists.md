@@ -2,7 +2,7 @@
 layout: post
 title:  "Take a look at my playlists!"
 date:   2021-04-09
-categories: music
+tags: music
 # tags: featured
 image: /assets/article_images/2021-04-09-playlists/sh_34407.jpg
 image2: /assets/article_images/2021-04-09-playlists/sh_34407.jpg

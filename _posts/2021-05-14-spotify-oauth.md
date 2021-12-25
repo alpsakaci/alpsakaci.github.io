@@ -2,7 +2,7 @@
 layout: post
 title:  "Spotify OAuth Client with Spring Boot"
 date:   2021-05-14
-categories: backend-development
+tags: spring-boot oauth
 # tags: featured
 # image: /assets/article_images/2021-05-14-spotify-oauth/x.jpg
 # image2: /assets/article_images/2021-05-14-spotify-oauth/x.jpg
