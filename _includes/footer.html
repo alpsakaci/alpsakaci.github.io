@@ -8,13 +8,12 @@
 </footer>
 <script src="/assets/js/main.js" defer="defer"></script>
 
-{%- if page.google_analytics -%}
-  <script src="/assets/js/galite.js"></script>
-  <script>
-    var galite = galite || {};
-    galite.UA = "{{ site.google_analytics }}";
-  </script>
-{%- endif -%}
+<script src="/assets/js/galite.js"></script>
+<script>
+  var galite = galite || {};
+  galite.UA = "{{ site.google_analytics }}";
+</script>
+
 {%- if page.url == '/archive/' -%}
   <script src="/assets/js/search.min.js"></script>
   <script>
