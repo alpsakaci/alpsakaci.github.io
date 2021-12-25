@@ -1,11 +1,27 @@
-<!-- footer start -->
-
-<footer class="site-footer">
-  <a class="subscribe" href="{{ "/feed.xml" | prepend: site.baseurl }}"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
-    <div class="inner">
-         <section class="copyright">All content copyright <a href="mailto:{{ site.email}}">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }} &bull; All rights reserved.</section>
-         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
-    </div>
+<footer class="footer">
+  <!-- <a class="footer_item" href="/thanks">ack.</a> -->
+  <!-- <a class="footer_item" href="javascript::void(0)">resume</a> -->
+  <span class="footer_item">All content copyright <a href="mailto:{{ site.author.email }}">{{ site.author.name }}</a> &copy; {{ site.time | date: '%Y' }} &bull; All rights reserved.</span>
+  <small class="footer_copyright">
+   
+  </small>
 </footer>
+<script src="/assets/js/main.js" defer="defer"></script>
 
-<!-- footer end -->
+{%- if page.google_analytics -%}
+  <script src="/assets/js/galite.js"></script>
+  <script>
+    var galite = galite || {};
+    galite.UA = "{{ site.google_analytics }}";
+  </script>
+{%- endif -%}
+{%- if page.url == '/archive/' -%}
+  <script src="/assets/js/search.min.js"></script>
+  <script>
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('search-results'),
+      json: '/assets/search.json',
+    });
+  </script>
+{%- endif -%}

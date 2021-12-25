@@ -6,3 +6,5 @@ _drafts
 vendor
 **/.DS_Store
 logo.png
+klise-*.gem
+Gemfile.lock
