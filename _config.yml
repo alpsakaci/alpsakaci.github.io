@@ -19,7 +19,6 @@ author:
     <small><i>Computer Science and Music work in harmony.</i></small>
   username: alpsakaci # general username
   github: alpsakaci # github username
-  twitter: alpsakaci # twitter username
   email: alpsakaci@protonmail.com # email adress
   avatar: /assets/img/avatar.jpg # change with your own avatar
 
@@ -92,17 +91,14 @@ plugins:
   - jekyll-postfiles
 
 social:
-  - icon: twitter
-    url: https://twitter.com/alpsakaci/
+  - icon:	linkedin
+    url:	https://www.linkedin.com/in/alpsakaci/
+  
+  - icon:	github
+    url:	https://github.com/alpsakaci/
 
   - icon: instagram
     url: https://instagram.com/alp.sakaci/
-    
-  - icon:	linkedin
-    url:	https://www.linkedin.com/in/alpsakaci/
-
-  - icon:	github
-    url:	https://github.com/alpsakaci/
 
   - icon:	envelope-o
     url:	mailto:alpsakaci@protonmail.com
