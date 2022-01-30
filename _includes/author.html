@@ -9,7 +9,7 @@
   <div class="custom-links">
     {% for social in site.social %}
       {% if social.url %}
-          <a class="icon-{{ social.icon }}" href="{{ social.url }}" {% if social.desc %} title="{{ social.desc }}"{% endif %}">
+          <a class="icon-{{ social.icon }}" style="text-decoration: none;" href="{{ social.url }}" {% if social.desc %} title="{{ social.desc }}"{% endif %}">
             <i class="fa fa-{{ social.icon }}"></i>
           </a>
           {% if social != site.social.last %}
