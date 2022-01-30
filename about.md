@@ -5,8 +5,57 @@ permalink: /about/
 ---
 
 ![](/assets/images/about.jpg)
-### Hi there, I'm Alp.
-- I earned a bachelor's degree in computer engineering in June 2020.
-- I'm interested in web services, authentication protocols and cryptology concepts.
-- I have experience with Linux system management and Docker containers. 
-- Apart from these, I play bass as hobby.
+### Eren Alp Şakacı
+Ankara, Turkey
+##### Education
+
+- Karabuk University<br>
+BSc Computer Engineering<br>
+2016 - 2020
+
+##### Interests and Tools
+
+- Concepts of Cryptology
+- Backend Development / Microservices
+- Linux servers and containers
+- Spring Framework
+- Java
+- Kotlin
+- GoLang
+- Python
+
+##### Experience
+
+- Software Engineer<br>
+Trendyol Group - Full-time<br>
+Dec 2021 - Present
+
+---
+
+- Software Engineer<br>
+Bilisim A.S. - Full-time<br>
+Aug 2021 - Nov 2021
+
+---
+
+- Software Engineer<br>
+Monday Hero, Inc - Apprenticeship<br>
+Dec 2020 - Feb 2021
+
+---
+
+- Software Engineering Intern<br>
+VBT Software - Internship<br>
+Jul 2020 - Aug 2020
+
+---
+
+- Software Engineering Intern<br>
+Infomedya | Digital Agency - Internship<br>
+Jul 2019 - Oct 2019
+
+---
+
+- Software Engineering Intern<br>
+Ltr Software - Internship<br>
+Jul 2018 - Aug 2018
