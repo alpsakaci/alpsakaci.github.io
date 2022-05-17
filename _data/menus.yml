@@ -10,6 +10,10 @@
   url: /archive/
   external: false
 
+- title: ada
+  url: /ada/
+  external: false
+
 - title: about
   url: /about/
   external: false
