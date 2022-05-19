@@ -5,6 +5,9 @@ permalink: /ada/
 ---
 
 ---
+![](/assets/images/ada/bc36f11d-f694-43a7-9a2b-6c5b34484d33.jpg)
+
+---
 ![](/assets/images/ada/629d0a7b-f726-4e03-9729-7fc2b09453cc.jpg)
 
 ---
