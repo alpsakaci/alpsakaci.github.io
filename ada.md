@@ -4,6 +4,8 @@ title: ADA
 permalink: /ada/
 ---
 
+![](/assets/images/ada/7fcedb50-48db-4246-a0e3-f86e0d798beb.jpg)
+
 ---
 ![](/assets/images/ada/bc36f11d-f694-43a7-9a2b-6c5b34484d33.jpg)
 
