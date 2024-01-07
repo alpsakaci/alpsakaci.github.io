@@ -1,0 +1,23 @@
+<footer class="footer">
+  <!-- <a class="footer_item" href="/thanks">ack.</a> -->
+  <!-- <a class="footer_item" href="javascript::void(0)">resume</a> -->
+  <span class="footer_item">All content copyright {{ site.author.name }} &copy; {{ site.time | date: '%Y' }} &bull; All
+    rights reserved.</span>
+  <small class="footer_copyright">
+
+  </small>
+</footer>
+<script src="/assets/js/main.js" defer="defer"></script>
+
+<script src="/assets/js/galite.js"></script>
+
+{%- if page.url == '/archive/' -%}
+<script src="/assets/js/search.min.js"></script>
+<script>
+  var sjs = SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('search-results'),
+    json: '/assets/search.json',
+  });
+</script>
+{%- endif -%}

@@ -1,0 +1,11 @@
+- title: home
+  url: /
+  external: false
+
+- title: tags
+  url: /tags/
+  external: false
+
+- title: archive
+  url: /archive/
+  external: false

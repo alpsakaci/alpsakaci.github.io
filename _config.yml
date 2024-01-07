@@ -1,0 +1,97 @@
+# Site settings
+title: Alp Şakacı # site title
+description: >- # site description
+  
+lang: en-US # default lang
+timezone: Asia/Jakarta # set your timezone
+image: assets/images/logo.png # This image used for Open Graph more info https://ogp.me/
+repo: https://github.com/piharpi/jekyll-klise # site repo [optional]
+mode: dark # default theme "dark" | "light"
+
+# Profile settings
+author:
+  name: Alp Şakacı
+  bio: >-
+    <small><i>Computer Science and <br>
+    Music work in harmony.</i></small>
+  username: alpsakaci
+  github: alpsakaci
+  email: alpsakaci@protonmail.com
+  avatar: /assets/img/avatar.jpg
+
+# URL settings
+url: "https://alpsakaci.com"
+baseurl:
+permalink: /:title/
+
+# Collection setting
+collections:
+  posts:
+    output: true
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: post
+      comments: false
+
+# Jekyll Compose default front matter
+jekyll_compose:
+  post_default_front_matter:
+    modified:
+    tags: []
+    description:
+  draft_default_front_matter:
+    modified:
+    tags: []
+    description:
+
+# Homepage limit posts
+number_of_posts: 5
+
+# Build settings
+# theme: klise
+sass:
+  style: compressed
+
+include:
+  - _redirects
+  - .htaccess
+
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - README.md
+  - node_modules
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - lighthouse.png
+  - klise-*.gem
+  - klise.gemspec
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-postfiles
+
+social:
+  - icon:	linkedin
+    url:	https://www.linkedin.com/in/alpsakaci/
+  
+  - icon:	github
+    url:	https://github.com/alpsakaci/
+
+  - icon: instagram
+    url: https://instagram.com/alp.sakaci/
