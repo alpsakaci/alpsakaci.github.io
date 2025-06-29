@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Obje Görüntüleyici</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        #container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        #info h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        #info p {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+
+        #controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .control-group input, .control-group select {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-size: 12px;
+        }
+
+        .control-group button {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+            margin-bottom: 5px;
+            transition: background 0.3s;
+        }
+
+        .control-group button:hover {
+            background: #5a6fd8;
+        }
+
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            z-index: 200;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        #stats {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 12px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+        <div id="loading">Yükleniyor...</div>
+    </div>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/MTLLoader.js"></script>
+
+    <script>
+        // Global variables
+        let scene, camera, renderer, controls;
+        let currentObject, currentMaterial;
+        let animationId;
+        let isAnimating = false;
+        let textureLoader = new THREE.TextureLoader();
+        let texture = null;
+
+        // Initialize the 3D scene
+        function init() {
+            // Create scene
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x1a1a2e);
+
+            // Create camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 800);
+
+            // Create renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            document.getElementById('container').appendChild(renderer.domElement);
+
+            // Create controls
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.screenSpacePanning = false;
+            controls.minDistance = 1;
+            controls.maxDistance = 50;
+
+            // Load texture
+            loadTexture();
+
+            // Add lights
+            addLights();
+
+            // Add ground
+            addGround();
+
+            // Create initial object
+            createObject();
+
+            // Add event listeners
+            addEventListeners();
+
+            // Start animation loop
+            animate();
+        }
+
+        // Load texture from file
+        function loadTexture() {
+            console.log('Starting texture loading...');
+            
+            // Try to load texture with crossOrigin setting
+            textureLoader.crossOrigin = '';
+            
+            textureLoader.load(
+                'text.jpg',
+                function (loadedTexture) {
+                    console.log('Texture loaded successfully:', loadedTexture);
+                    texture = loadedTexture;
+                    texture.wrapS = THREE.RepeatWrapping;
+                    texture.wrapT = THREE.RepeatWrapping;
+                    texture.repeat.set(1, 1);
+                    console.log('Texture properties set');
+                    
+                    // Update current object with texture
+                    if (currentObject) {
+                        console.log('Updating current object with texture');
+                        updateMaterial();
+                    } else {
+                        console.log('No current object to update');
+                    }
+                },
+                function (xhr) {
+                    console.log('Texture loading progress:', (xhr.loaded / xhr.total * 100) + '% loaded');
+                },
+                function (error) {
+                    console.error('Error loading texture:', error);
+                    console.log('Creating fallback texture...');
+                    createFallbackTexture();
+                }
+            );
+        }
+
+        // Create fallback texture when file cannot be loaded
+        function createFallbackTexture() {
+            // Create a canvas to generate a procedural texture
+            const canvas = document.createElement('canvas');
+            canvas.width = 256;
+            canvas.height = 256;
+            const ctx = canvas.getContext('2d');
+
+            // Create a gradient pattern
+            const gradient = ctx.createLinearGradient(0, 0, 256, 256);
+            gradient.addColorStop(0, '#ff6b6b');
+            gradient.addColorStop(0.5, '#4ecdc4');
+            gradient.addColorStop(1, '#45b7d1');
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 256, 256);
+
+            // Add some pattern
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            for (let i = 0; i < 256; i += 32) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, 256);
+                ctx.stroke();
+            }
+            for (let i = 0; i < 256; i += 32) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(256, i);
+                ctx.stroke();
+            }
+
+            // Create texture from canvas
+            texture = new THREE.CanvasTexture(canvas);
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.set(1, 1);
+            
+            console.log('Fallback texture created');
+            
+            // Update current object with texture
+            if (currentObject) {
+                updateMaterial();
+            }
+        }
+
+        // Add lights to the scene
+        function addLights() {
+            // Ambient light
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+            scene.add(ambientLight);
+
+            // Directional light (sun)
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(10, 10, 5);
+            directionalLight.castShadow = true;
+            directionalLight.shadow.mapSize.width = 2048;
+            directionalLight.shadow.mapSize.height = 2048;
+            scene.add(directionalLight);
+
+            // Point light
+            const pointLight = new THREE.PointLight(0x667eea, 0.5, 100);
+            pointLight.position.set(-5, 5, -5);
+            scene.add(pointLight);
+        }
+
+        // Add ground plane
+        function addGround() {
+            // Zemin yüzeyi kaldırıldı - sadece boş fonksiyon
+        }
+
+        // Create 3D object
+        function createObject() {
+            // Remove current object
+            if (currentObject) {
+                scene.remove(currentObject);
+            }
+
+            // Mutfak kapağı - ince dikdörtgen levha
+            const geometry = new THREE.BoxGeometry(15, 0.01, 26); // Genişlik: 400, Kalınlık: 0.01, Yükseklik: 701
+            const material = getCurrentMaterial();
+
+            currentObject = new THREE.Mesh(geometry, material);
+            currentObject.castShadow = true;
+            currentObject.receiveShadow = true;
+            
+            // Objeyi dik pozisyona getir
+            currentObject.rotation.x = -Math.PI / 2; // 90 derece döndürerek dik yap
+            currentObject.rotation.y = 0; // Dik pozisyon
+            currentObject.rotation.z = 0; // Dik pozisyon
+            
+            // Objeyi tam merkeze yerleştir
+            currentObject.position.set(0, 0, 0); // Tam merkez (orijin)
+            
+            scene.add(currentObject);
+        }
+
+        // Get current material based on selection
+        function getCurrentMaterial() {
+            console.log('Creating material with texture only on front face');
+
+            // Front face with texture
+            const frontMaterial = new THREE.MeshBasicMaterial({ 
+                map: texture,
+                transparent: false,
+                opacity: 1.0
+            });
+
+            // Back face with solid color
+            const backMaterial = new THREE.MeshBasicMaterial({ 
+                color: 0x808080, // Gri renk
+                transparent: false,
+                opacity: 1.0
+            });
+
+            // Create array of materials for different faces
+            const materials = [
+                backMaterial, // Right face
+                backMaterial, // Left face
+                backMaterial, // Top face
+                frontMaterial, // Bottom face
+                backMaterial, // Front face (texture)
+                backMaterial  // Back face (texture)
+            ];
+
+            console.log('Materials created with texture on front face only');
+
+            currentMaterial = materials;
+            return materials;
+        }
+
+        // Update object material
+        function updateMaterial() {
+            if (currentObject) {
+                console.log('Updating material with texture:', texture);
+                const newMaterial = getCurrentMaterial();
+                console.log('New material created:', newMaterial);
+                currentObject.material = newMaterial;
+                console.log('Material applied to object');
+            } else {
+                console.log('No current object to update material');
+            }
+        }
+
+        // Add event listeners
+        function addEventListeners() {
+            // Window resize
+            window.addEventListener('resize', onWindowResize);
+
+            // Keyboard controls
+            document.addEventListener('keydown', onKeyDown);
+        }
+
+        // Handle window resize
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        // Handle keyboard controls
+        function onKeyDown(event) {
+            const speed = 0.5;
+            switch (event.code) {
+                case 'KeyW':
+                    camera.position.z -= speed;
+                    break;
+                case 'KeyS':
+                    camera.position.z += speed;
+                    break;
+                case 'KeyA':
+                    camera.position.x -= speed;
+                    break;
+                case 'KeyD':
+                    camera.position.x += speed;
+                    break;
+                case 'KeyQ':
+                    camera.position.y += speed;
+                    break;
+                case 'KeyE':
+                    camera.position.y -= speed;
+                    break;
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            animationId = requestAnimationFrame(animate);
+
+            if (isAnimating && currentObject) {
+                currentObject.rotation.x += 0.01;
+                currentObject.rotation.y += 0.01;
+            }
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        // Load external 3D model
+        function loadModel(url, type = 'gltf') {
+            document.getElementById('loading').style.display = 'block';
+
+            if (type === 'obj') {
+                const objLoader = new THREE.OBJLoader();
+                const mtlLoader = new THREE.MTLLoader();
+
+                mtlLoader.load(url.replace('.obj', '.mtl'), (materials) => {
+                    materials.preload();
+                    objLoader.setMaterials(materials);
+                    objLoader.load(url, (object) => {
+                        setupLoadedModel(object);
+                    });
+                });
+            } else {
+                const loader = new THREE.GLTFLoader();
+                loader.load(url, (gltf) => {
+                    setupLoadedModel(gltf.scene);
+                });
+            }
+        }
+
+        // Setup loaded model
+        function setupLoadedModel(object) {
+            if (currentObject) {
+                scene.remove(currentObject);
+            }
+
+            // Center and scale the model
+            const box = new THREE.Box3().setFromObject(object);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 2 / maxDim;
+
+            object.position.sub(center);
+            object.scale.multiplyScalar(scale);
+
+            currentObject = object;
+            currentObject.traverse((child) => {
+                if (child.isMesh) {
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                }
+            });
+
+            scene.add(currentObject);
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
